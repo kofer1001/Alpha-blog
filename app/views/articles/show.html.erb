@@ -6,11 +6,12 @@
             <span class="border border-primary"></span>
               <div class="card-header font-italic font-weight-bolder">
                 by <%= @article.user.username if @article.user %>
+                <%= link_to gravatar_for(@article.user), user_path(@article.user) %>
               </div>
               <div class="card-body">
                 <div class="card-text text-left"> <%= @article.description %> <%= simple_format(@article.description) %> </div>
-               <button type="button" class="btn btn-outline-secondary"> <%= link_to "Edit", edit_article_path(@article) %> </button>
-               <button type="button" class="btn btn-outline-danger"> <%= link_to "Delete", article_path(@article), method: :delete, data: {confirm: "Are you sure?"} %> </button>
+              <%= link_to "Edit", edit_article_path(@article), class: "btn btn-outline-secondary" %>
+              <%= link_to "Delete", article_path(@article), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-outline-danger" %>
               </div>
               <div class="card-footer text-muted">
                 <small> Created <%= time_ago_in_words(@article.created_at)%> ago,
